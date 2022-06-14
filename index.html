@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script type="text/javascript" src="/index.js"></script>
+  <script src="myJS.js"></script>
+</head>
+
+<body>
+    <div id="login">
+      <h1>login screen</h1>
+      <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+    </div>
+    <div id="loggedin" display="none">
+      <h1>and you've made it hereeeeeee</h1>
+      <h2 id="yup"></h2>
+      <h3 id="abc"></h3>
+      <h4 id="def"></h4>
+      <h2 id="ghi"></h2>
+      <h2 id="jkl"></h2>
+      <h2 id="mood"></h2>
+      <h2 id="energy"></h2>
+      <h2 id="acoustic"></h2>
+    </div>
+</body>
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+    var url = window.location.href;
+
+    /* 
+    This first part is checking if the current page is the page
+    generated AFTER the callback function. If it isn't, no code
+    executes.
+    */
+
+    if (url.includes("logged")) {
+      $('#loggedin').show();
+      $('#login').hide();
+      document.getElementById("yup").innerHTML = url;
+
+      async function getValues() {
+        const values_response = await fetch('/json_fetch');
+        const values_json = await values_response.json();
+        return values_json;
+      }
+
+      getValues().then(
+        function(result) {
+
+          const mood = result.mood;
+          const energy = result.energy;
+          const acoustic = result.acoustic;
+
+          const short_mood = mood[0];
+          const medium_mood = mood[1];
+          const long_mood = mood[2];
+
+          var mood_str = "short mood: " + short_mood + ", medium mood: " + medium_mood + 
+            ", long mood: " + long_mood;
+
+          const short_energy = energy[0];
+          const medium_energy = energy[1];
+          const long_energy = energy[2];
+
+          var energy_str = "short energy: " + short_energy + ", medium energy: " + medium_energy + 
+            ", long energy: " + long_energy;
+
+          const short_acoustic = acoustic[0];
+          const medium_acoustic = acoustic[1];
+          const long_acoustic = acoustic[2];
+
+          var acoustic_str = "short acoustic: " + short_acoustic + ", medium acoustic: " + medium_acoustic + 
+            ", long acoustic: " + long_acoustic;
+
+          document.getElementById("mood").innerHTML = mood_str;
+          document.getElementById("energy").innerHTML = energy_str;
+          document.getElementById("acoustic").innerHTML = acoustic_str;
+        },
+        function(error) {
+          document.getElementById("jkl").innerHTML = "aint no way???? " + error;
+        }
+      );
+      
+      const mood = values[0];
+      const energy = values[1];
+      const acoustic = values[2];
+
+      const short_mood = mood[0];
+      const medium_mood = mood[1];
+      const long_mood = mood[2];
+
+      const short_energy = energy[0];
+      const medium_energy = energy[1];
+      const long_energy = energy[2];
+
+      const short_acoustic = acoustic[0];
+      const medium_acoustic = acoustic[1];
+      const long_acoustic = acoustic[2];
+
+    } else {
+      $('#login').show();
+      $('#loggedin').hide();
+    }
+</script>
+
+</html>
