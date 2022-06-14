@@ -42,18 +42,13 @@ app.get('/callback', function routeHandler(req, res) {
     var code = req.query.code || null;
     spotifyApi.authorizationCodeGrant(code).then(
         function(data) {
-          console.log('The token expires in ' + data.body['expires_in']);
-          console.log('The access token is ' + data.body['access_token']);
-          console.log('The refresh token is ' + data.body['refresh_token']);
-
           var access_token = data.body['access_token'];
           var refresh_token = data.body['refresh_token'];
 
           // Set the access token on the API object to use it in later calls
           spotifyApi.setAccessToken(data.body['access_token']);
           spotifyApi.setRefreshToken(data.body['refresh_token']);
-          //pass the access token and refresh token via url
-
+          
           var url_params = new URLSearchParams({logged: 'true'});
           var url_redirect = '/#' + url_params;
           res.redirect(url_redirect);
