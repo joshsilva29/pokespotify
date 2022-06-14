@@ -19,7 +19,9 @@
 }
 
 #login_button {
-    width: 50%;
+    width: 25%;
     margin: auto;
+    color: #1DB954;
+    display: block;
 }
 
