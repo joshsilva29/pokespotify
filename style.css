@@ -14,14 +14,14 @@
     font-weight: 900;
     color: #1DB954;
     text-align: center;
-    font-size: 4.5em;
+    font-size: 8em;
     margin: 15px auto;
 }
 
 #login_button {
-    width: 25%;
+    width: 15%;
     margin: auto;
-    color: #1DB954;
+    background-color: #1DB954;
     display: block;
 }
 
