@@ -40,7 +40,7 @@
   }
 
 * {
-    font-family: 'Mulish', 'Papyrus', sans-serif, ;
+    font-family: 'Mulish', 'Arial', sans-serif;
 }
 
 #title {
@@ -53,6 +53,8 @@
 
 #login {
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -61,8 +63,7 @@
         width: 30vw;
         justify-content: center;
         background-color: #1DB954;
-        display: flex;
-        flex-shrink: 0;
+        border-radius: 50px;
         font-size: 3vmax;
         font-weight: 600;
         padding: 0.2vmax 1vmax;
@@ -78,8 +79,7 @@
         width: 50vw;
         justify-content: center;
         background-color: #1DB954;
-        display: flex;
-        flex-shrink: 0;
+        border-radius: 50px;
         font-size: 3vmax;
         font-weight: 600;
         padding: 0.2vmax 1vmax;
