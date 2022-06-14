@@ -19,6 +19,7 @@
 }
 
 #login_button {
+    width: 30vw;
     justify-content: center;
     background-color: #1DB954;
     display: flex;
