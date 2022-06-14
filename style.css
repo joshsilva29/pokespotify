@@ -18,17 +18,36 @@
     margin: 1em auto 30px;
 }
 
-#login_button {
-    width: 30vw;
-    justify-content: center;
-    background-color: #1DB954;
-    display: flex;
-    flex-shrink: 0;
-    font-size: 3vmax;
-    padding: 0.2vmax 1vmax;
-    text-align: center;
-    margin-top: 5vmin;
-    margin-left: 20vmin;
-    margin-right: 20vmin;
+
+@media screen and (orientation: landscape) {
+    #login_button {
+        width: 30vw;
+        justify-content: center;
+        background-color: #1DB954;
+        display: flex;
+        flex-shrink: 0;
+        font-size: 3vmax;
+        padding: 0.2vmax 1vmax;
+        text-align: center;
+        margin-top: 5vmin;
+        margin-left: 20vmin;
+        margin-right: 20vmin;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    #login_button {
+        width: 50vw;
+        justify-content: center;
+        background-color: #1DB954;
+        display: flex;
+        flex-shrink: 0;
+        font-size: 3vmax;
+        padding: 0.2vmax 1vmax;
+        text-align: center;
+        margin-top: 5vmin;
+        margin-left: 20vmin;
+        margin-right: 20vmin;
+    }
 }
 
