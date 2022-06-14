@@ -16,6 +16,8 @@
     text-align: center;
     font-size: 8em;
     margin: 1em auto 30px;
+    display: flex;
+    flex-shrink: 2;
 }
 
 #login_button {
