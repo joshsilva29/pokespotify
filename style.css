@@ -44,7 +44,7 @@
 }
 
 #title {
-    font-weight: 900;
+    font-weight: 800;
     color: #1DB954;
     text-align: center;
     font-size: 8em;
@@ -62,7 +62,6 @@
 @media screen and (orientation: landscape) {
     #login_button {
         width: 30vw;
-        justify-content: center;
         background-color: #1DB954;
         border-radius: 50px;
         font-size: 3vmax;
@@ -78,7 +77,6 @@
 @media screen and (orientation: portrait) {
     #login_button {
         width: 50vw;
-        justify-content: center;
         background-color: #1DB954;
         border-radius: 50px;
         font-size: 3vmax;
