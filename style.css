@@ -20,6 +20,8 @@
 
 #login_button {
     width: 30vw;
+    height: 15vw;
+    margin: 0 auto;
     justify-content: center;
     background-color: #1DB954;
     display: flex;
