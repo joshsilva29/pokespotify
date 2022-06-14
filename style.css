@@ -15,7 +15,7 @@
     color: #1DB954;
     text-align: center;
     font-size: 8em;
-    margin: 15px auto;
+    margin: 8em auto;
 }
 
 #login_button {
@@ -23,5 +23,6 @@
     margin: auto;
     background-color: #1DB954;
     display: block;
+    min-width: 50px;
 }
 
