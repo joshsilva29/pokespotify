@@ -50,7 +50,7 @@ html {
 }
 
 body {
-    background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);;
+    background-image: radial-gradient(circle at 10% 20%, rgb(148, 241, 246) 0%, rgb(148, 189, 246) 100.7%);
 }
 
 #title {
