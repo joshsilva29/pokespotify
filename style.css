@@ -57,7 +57,7 @@ body {
 #login-credits {
     text-align: center;
     color: white;
-    position: absolute;
+    position: fixed;
     font-size: 1em;
     bottom: 1em;
 }
