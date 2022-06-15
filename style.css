@@ -54,6 +54,13 @@ body {
     margin: auto;
 }
 
+#login-credits {
+    color: white;
+    position: absolute;
+    font-size: 2em;
+    bottom: 2em;
+}
+
 #title {
     font-weight: 800;
     color: #1DB954;
