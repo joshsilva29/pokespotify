@@ -55,10 +55,11 @@ body {
 }
 
 #login-credits {
+    text-align: center;
     color: white;
     position: absolute;
-    font-size: 2em;
-    bottom: 2em;
+    font-size: 1em;
+    bottom: 1em;
 }
 
 #title {
