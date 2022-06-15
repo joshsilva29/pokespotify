@@ -1,5 +1,15 @@
+@font-face {
+    font-family: "Circular-Bold";
+    src: url("/fonts/circular-bold.woff2") format("woff2");
+  }
+
+@font-face {
+    font-family: "Circular-Book";
+    src: url("/fonts/circular-bold.woff2") format("woff2");
+}
+
 * {
-    font-family: 'Mulish', Arial, Helvetica, sans-serif;
+    font-family: 'Circular-Bold', Arial, Helvetica, sans-serif;
     text-align: center;
     margin: 0 auto;
 }
