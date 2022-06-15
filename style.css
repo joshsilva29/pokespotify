@@ -56,6 +56,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 0 auto;
+    text-align: center;
 }
 
 @media screen and (orientation: landscape) {
@@ -67,9 +69,7 @@
         font-weight: 600;
         padding: 0.2vmax 1vmax;
         text-align: center;
-        margin-top: 5vmin;
-        margin-left: 20vmin;
-        margin-right: 20vmin;
+        margin: 0 auto;
     }
 }
 
@@ -82,9 +82,7 @@
         font-weight: 600;
         padding: 0.2vmax 1vmax;
         text-align: center;
-        margin-top: 5vmin;
-        margin-left: 20vmin;
-        margin-right: 20vmin;
+        margin: 0 auto;
     }
 }
 
