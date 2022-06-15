@@ -53,10 +53,6 @@
     margin: 1em auto 0.1em;
 }
 
-#title_caption {
-    margin: 0em auto 0.1em;
-}
-
 #login {
     text-align: center;
     display: flex;
@@ -75,7 +71,7 @@
         font-weight: 600;
         padding: 0.2vmax 1vmax;
         text-align: center;
-        margin: 0 auto;
+        margin: 0.1em auto 0em;
     }
 }
 
@@ -88,7 +84,7 @@
         font-weight: 600;
         padding: 0.2vmax 1vmax;
         text-align: center;
-        margin: 0 auto;
+        margin: 0.1em auto 0em;
     }
 }
 
