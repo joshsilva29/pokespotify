@@ -54,12 +54,12 @@ body {
     margin: auto;
 }
 
-#login-credits {
-    text-align: center;
+.info {
     color: white;
     position: fixed;
     font-size: 1em;
-    bottom: 1em;
+    bottom: 50%;
+    left: 1em;
 }
 
 #title {
