@@ -40,7 +40,7 @@
   }
 
 * {
-    font-family: 'Mulish', 'Arial', sans-serif;
+    font-family: 'Mulish', Arial, Helvetica, sans-serif;
 }
 
 #title {
@@ -57,7 +57,6 @@
     flex-direction: column;
     justify-content: center;
 }
-
 
 @media screen and (orientation: landscape) {
     #login_button {
