@@ -46,6 +46,10 @@
 }
 
 html {
+    background: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
+}
+
+body {
     background: linear-gradient(to bottom, #d299c2 0%, #fef9d7 100%);
 }
 
