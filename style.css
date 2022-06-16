@@ -26,17 +26,16 @@ body {
 
 .info {
     color: white;
-    position: absolute;
+    text-align: center;
     font-size: 1em;
-    bottom: 1em;
-    left: 1.5em;
 }
 
 .container {
     display: flex;
     justify-content: center;
     margin: auto;
-    height: 100%;
+    width: 100%;
+    flex-direction: column;
 }
 
 #title {
