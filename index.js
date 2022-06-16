@@ -48,7 +48,7 @@ app.get('/callback', function routeHandler(req, res) {
           // Set the access token on the API object to use it in later calls
           spotifyApi.setAccessToken(data.body['access_token']);
           spotifyApi.setRefreshToken(data.body['refresh_token']);
-          
+
           var url_params = new URLSearchParams({logged: 'true'});
           var url_redirect = '/#' + url_params;
           res.redirect(url_redirect);
@@ -60,8 +60,6 @@ app.get('/callback', function routeHandler(req, res) {
   });
 
 app.get('/json_fetch', function routeHandler(req,res) {
-
-  console.log("where am i");
 
   async function get_json() {
     const short_response = await spotifyApi.getMyTopTracks({time_range : "short_term"});
@@ -119,16 +117,9 @@ app.get('/json_fetch', function routeHandler(req,res) {
     }
 
     short_tempo /= short_features_response.body.audio_features.length;
-    var str_tempo = "tempoooooooo: " + short_tempo;
-
-    console.log(str_tempo);
-
     short_mood /= short_features_response.body.audio_features.length;
     short_energy /= short_features_response.body.audio_features.length;
     short_acoustic /= short_features_response.body.audio_features.length;
-
-    console.log("short_acoustic:")
-    console.log("yesssss" + short_acoustic);
 
     for (const song of medium_features_response.body.audio_features) {
       medium_mood += song["valence"] + song["mode"];
