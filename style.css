@@ -32,6 +32,11 @@ body {
     left: 1.5em;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+}
+
 #title {
     font-weight: 800;
     color: #1DB954;
