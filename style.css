@@ -22,6 +22,7 @@ body {
     background-image: linear-gradient(181deg, rgb(2, 0, 97) 15%, rgb(97, 149, 219) 158.5%);
     margin: auto;
     position: relative;
+    height: 100%;
 }
 
 .info {
