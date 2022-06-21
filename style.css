@@ -44,21 +44,18 @@ body {
     font-weight: 800;
     color: #1DB954;
     text-align: center;
-    font-size: 8em;
+    font-size: calc(12px + 9vw);
     margin-top: 1em;
     margin-right: auto;
     margin-left: auto;
     display: inline-block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
 }
 
 #title_caption {
     text-align: center;
     color: #1DB954;
     margin-bottom: 1.4em;
+    font-size: calc(12px + 1.5vw);
 }
 
 .container #login {
