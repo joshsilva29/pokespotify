@@ -5,7 +5,8 @@ var app = express();
 var spotifyApi = new SpotifyWebApi({
     clientId: '04893084a5104966975a4ee50f3a5933',
     clientSecret: '14e8d19288e1429bb5fa6dab9b9b8fcd',
-    redirectUri: 'https://pokemon-spotify.herokuapp.com/callback'
+    // redirectUri: 'https://pokemon-spotify.herokuapp.com/callback'
+    redirectUri: 'http://localhost:8888/callback'
   });
 
 // 'http://localhost:8888/callback'
@@ -62,6 +63,7 @@ app.get('/callback', function routeHandler(req, res) {
 app.get('/json_fetch', function routeHandler(req,res) {
 
   async function get_json() {
+    console.log("inside the function");
     const short_response = await spotifyApi.getMyTopTracks({time_range : "short_term"});
     const medium_response = await spotifyApi.getMyTopTracks({time_range : "medium_term"});
     const long_response = await spotifyApi.getMyTopTracks({time_range : "long_term"});
@@ -86,9 +88,13 @@ app.get('/json_fetch', function routeHandler(req,res) {
       long_arr.push(song["id"]);
     }
 
+    console.log("how r we not here at least");
+
     const short_features_response = await spotifyApi.getAudioFeaturesForTracks(short_arr);
     const medium_features_response = await spotifyApi.getAudioFeaturesForTracks(medium_arr);
     const long_features_response = await spotifyApi.getAudioFeaturesForTracks(long_arr);
+
+    console.log("after responses for features");
 
     var short_mood = 0;
     var medium_mood = 0;
@@ -113,7 +119,8 @@ app.get('/json_fetch', function routeHandler(req,res) {
       }
     }
 
-    short_tempo /= short_features_response.body.audio_features.length;
+    console.log("did we make it past the first short calculations");
+
     short_mood /= short_features_response.body.audio_features.length;
     short_energy /= short_features_response.body.audio_features.length;
     short_acoustic /= short_features_response.body.audio_features.length;
@@ -147,10 +154,14 @@ app.get('/json_fetch', function routeHandler(req,res) {
     long_mood /= long_features_response.body.audio_features.length;
     long_energy /= long_features_response.body.audio_features.length;
     long_acoustic /= long_features_response.body.audio_features.length;
+
+    console.log("smth wrong here at avg");
   
     var avg_mood = (short_mood + medium_mood + long_mood) / 3;
     var avg_energy = (short_energy + medium_energy + long_energy) / 3;
     var avg_acoustic = (short_acoustic + medium_acoustic + long_acoustic) / 3;
+
+    console.log("here at least");
 
     function get_type() {
       if (avg_mood < 1) {
@@ -188,6 +199,7 @@ app.get('/json_fetch', function routeHandler(req,res) {
           }
         } else { //fire and fighting
           if(avg_acoustic < 0.35) { //fire
+            console.log("here... at typing");
             return "fire";
           } else { //fighting
             return "fighting";
@@ -313,6 +325,7 @@ app.get('/json_fetch', function routeHandler(req,res) {
             if (avg_mood > 1.15) { //E-, M+
               return "chimchar";
             } else { //E-, M-
+              console.log("made it to torchic");
               return "torchic";
             }
           }
@@ -475,8 +488,11 @@ app.get('/json_fetch', function routeHandler(req,res) {
       }
     }
 
+    console.log("i make it here pls like whatttt");
+
     var type = get_type();
     var name = get_pokemon(type);
+
     var species_name = name;
     var official_name = name.charAt(0).toUpperCase() + name.slice(1);
     //species link gets json with flavor text (use omega ruby flavor texts)
@@ -493,59 +509,16 @@ app.get('/json_fetch', function routeHandler(req,res) {
     var species_link = "https://pokeapi.co/api/v2/pokemon-species/" + species_name;
     var poke_link = "https://pokeapi.co/api/v2/pokemon/" + name;
 
-    const species_call = await fetch(species_link);
-    const poke_call = await fetch(poke_link);
-    var flavor = "";
-    var artwork_link = "";
-    var types = [];
-
-    if(species_name === "vulpix") {
-      flavor += "In hot weather, this Pokémon makes ice shards with its six tails and sprays them around to cool itself off.";
-    } else {
-      //get most recent english flavor text
-      for(var i = species_call.body.flavor_text_entries.length - 1; i >= 0; i--) {
-        if(species_call.body.flavor_text_entries[i].language.name === "en") {
-          flavor += species_call.body.flavor_text_entries[i].flavor_text;
-          break;
-        }
-      }
-    }
-
-    //get link of official artwork
-    artwork_link += poke_call.body.sprites.other["official-artwork"].front_default;
-
-    // fetch(species_link)
-    //   .then(response => response.json())
-    //   .then(species_data => {
-    //     for(var i = species_data.flavor_text_entries.length - 1; i >= 0; i--) {
-    //       if(flavor_text_entries[i].language.name === "en") {
-    //         flavor_txt += flavor_text_entries[i].flavor_text;
-    //         break;
-    //       }
-    //     }
-
-    //     fetch(poke_link)
-    //     .then(poke_response => poke_response.json())
-    //     .then(poke_data => {
-    //       image_link += poke_data.sprites.other["official-artwork"].front_default;
-
-    //     })
-    //     .catch(error => {
-    //       console.log("error");
-    //     })
-
-    //   })
-    //   .catch(error => {
-    //     console.log("error");
-    //   });
+    console.log(species_link);
+    console.log(poke_link);
 
     var all_vals = {
       "mood" : avg_mood,
       "energy" : avg_energy,
       "acoustic" : avg_acoustic,
-      "flavor": flavor,
-      "artwork": artwork_link,
-      "name": official_name
+      "name": official_name,
+      "species": species_link,
+      "poke": poke_link
     }
 
     return all_vals

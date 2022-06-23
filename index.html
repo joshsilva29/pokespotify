@@ -21,8 +21,8 @@
         <a id="login_button" href="/login" class="btn btn-primary">Spotify Login</a>
       </div>
       <div id="loggedin" display="none">
-        <img id="poke_img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/165.png" alt="ledyba. u have a bug" width="300" height="300">
-        <h2 id="name" style="color: white"></h2>
+        <img id="poke_img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/152.png" alt="ledyba. u have a bug" width="300" height="300">
+        <h2 id="name" style="color: white">enjoy this chikorita as ur content loads. yass</h2>
         <h2 id="flavor" style="color: white"></h2>
         <h2 id="mood" style="color: white"></h2>
         <h2 id="energy" style="color: white"></h2>
@@ -44,17 +44,40 @@
     generated AFTER the callback function. If it isn't, no code
     executes.
     */
-    document.getElementById("abc").innerHTML = "made it to this place";
 
     if (url.includes("logged")) {
-      document.getElementById("yup").innerHTML = "BUT DO WE MAKE IT HERE";
       $('#loggedin').show();
       $('#login').hide();
-      document.getElementById("yup").innerHTML = url;
+
+      document.getElementById("jkl").innerHTML = "pls";
 
       async function getValues() {
         const values_response = await fetch('/json_fetch');
         const values_json = await values_response.json();
+        
+        const species_call = await fetch(values_json.species);
+        const species = await species_call.json();
+        const poke_call = await fetch(values_json.poke);
+        const poke = await poke_call.json();
+
+        var flavor = "";
+        var artwork = poke.sprites.other["official-artwork"].front_default;
+
+        if(values_json.name === "vulpix") {
+          flavor += "In hot weather, this Pokémon makes ice shards with its six tails and sprays them around to cool itself off.";
+        } else {
+          //get most recent english flavor text
+          for(var i = species.flavor_text_entries.length - 1; i >= 0; i--) {
+            if(species.flavor_text_entries[i].language.name === "en") {
+              flavor += species.flavor_text_entries[i].flavor_text;
+              break;
+            }
+          }
+        }
+
+        values_json.flavor = flavor;
+        values_json.artwork = artwork;
+
         return values_json;
       }
 
