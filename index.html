@@ -21,15 +21,13 @@
         <a id="login_button" href="/login" class="btn btn-primary">Spotify Login</a>
       </div>
       <div id="loggedin" display="none">
-        <h1 style="color: white">young money nicki minaj justin</h1>
-        <h2 id="yup" style="color: white"></h2>
-        <h3 id="abc" style="color: white"></h3>
-        <h4 id="def" style="color: white"></h4>
-        <h2 id="ghi" style="color: white"></h2>
-        <h2 id="jkl" style="color: white">uhhhh</h2>
+        <img id="poke_img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/165.png" alt="ledyba. u have a bug" width="300" height="300">
+        <h2 id="name" style="color: white"></h2>
+        <h2 id="flavor" style="color: white"></h2>
         <h2 id="mood" style="color: white"></h2>
         <h2 id="energy" style="color: white"></h2>
         <h2 id="acoustic" style="color: white"></h2>
+        <h2 id="jkl" style="color: white"></h2>
       </div>
       <div class="info">
         <h4 id="login-credits" >Developed by Joshua Silva</h4>
@@ -62,35 +60,20 @@
 
       getValues().then(
         function(result) {
-
-          const mood = result.mood;
-          const energy = result.energy;
-          const acoustic = result.acoustic;
-
-          const short_mood = mood[0];
-          const medium_mood = mood[1];
-          const long_mood = mood[2];
-
-          var mood_str = "short mood: " + short_mood + ", medium mood: " + medium_mood + 
-            ", long mood: " + long_mood;
-
-          const short_energy = energy[0];
-          const medium_energy = energy[1];
-          const long_energy = energy[2];
-
-          var energy_str = "short energy: " + short_energy + ", medium energy: " + medium_energy + 
-            ", long energy: " + long_energy;
-
-          const short_acoustic = acoustic[0];
-          const medium_acoustic = acoustic[1];
-          const long_acoustic = acoustic[2];
-
-          var acoustic_str = "short acoustic: " + short_acoustic + ", medium acoustic: " + medium_acoustic + 
-            ", long acoustic: " + long_acoustic;
+          var poke_name = result.name;
+          var mood_str = "" + result.mood;
+          var energy_str = "" + result.energy;
+          var acoustic_str = "" + result.acoustic;
+          var flavor_text = result.flavor;
+          var artwork_link = result.artwork;
 
           document.getElementById("mood").innerHTML = mood_str;
           document.getElementById("energy").innerHTML = energy_str;
           document.getElementById("acoustic").innerHTML = acoustic_str;
+          document.getElementById("name").innerHTML = poke_name;
+          document.getElementById("flavor").innerHTML = flavor_text;
+          document.getElementById("poke_img").src = artwork_link;
+          document.getElementById("poke_img").alt = "this is a " + poke_name;
         },
         function(error) {
           document.getElementById("jkl").innerHTML = "aint no way???? " + error;
