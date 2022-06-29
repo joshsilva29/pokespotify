@@ -20,14 +20,16 @@
         <h2 id="title_caption">What Pokémon are you based on your listening history?</h2>
         <a id="login_button" href="/login" class="btn btn-primary">Spotify Login</a>
       </div>
+      <div id="loading" display="none">
+        <img id="load_gif" src="/images/pokeball_load.gif">
+      </div>
       <div id="loggedin" display="none">
-        <img id="poke_img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/152.png" alt="ledyba. u have a bug" width="300" height="300">
-        <h2 id="name" style="color: white">enjoy this chikorita as ur content loads. yass</h2>
+        <img id="poke-photo" src="" alt="batshit crazy farts">
+        <h2 id="poke-name" style="color: white"></h2>
         <h2 id="flavor" style="color: white"></h2>
         <h2 id="mood" style="color: white"></h2>
         <h2 id="energy" style="color: white"></h2>
         <h2 id="acoustic" style="color: white"></h2>
-        <h2 id="jkl" style="color: white"></h2>
       </div>
       <div class="info">
         <h4 id="login-credits" >Developed by Joshua Silva</h4>
@@ -46,10 +48,9 @@
     */
 
     if (url.includes("logged")) {
-      $('#loggedin').show();
       $('#login').hide();
-
-      document.getElementById("jkl").innerHTML = "pls";
+      $('#loggedin').hide();
+      $('#loading').show();
 
       async function getValues() {
         const values_response = await fetch('/json_fetch');
@@ -93,18 +94,24 @@
           document.getElementById("mood").innerHTML = mood_str;
           document.getElementById("energy").innerHTML = energy_str;
           document.getElementById("acoustic").innerHTML = acoustic_str;
-          document.getElementById("name").innerHTML = poke_name;
+          document.getElementById("poke-name").innerHTML = poke_name;
           document.getElementById("flavor").innerHTML = flavor_text;
-          document.getElementById("poke_img").src = artwork_link;
-          document.getElementById("poke_img").alt = "this is a " + poke_name;
+          document.getElementById("poke-photo").src = artwork_link;
+          document.getElementById("poke-photo").alt = "this is a " + poke_name;
         },
         function(error) {
-          document.getElementById("jkl").innerHTML = "aint no way???? " + error;
+          document.getElementById("poke-name").innerHTML = "aint no way???? " + error;
         }
       );
 
+      setTimeout(function () {
+        $('#loading').hide();
+        $('#loggedin').show();
+      }, 2000);
+
     } else {
       $('#login').show();
+      $('#loading').hide();
       $('#loggedin').hide();
     }
 </script>
