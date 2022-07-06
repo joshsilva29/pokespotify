@@ -5,8 +5,8 @@ var app = express();
 var spotifyApi = new SpotifyWebApi({
     clientId: '04893084a5104966975a4ee50f3a5933',
     clientSecret: '14e8d19288e1429bb5fa6dab9b9b8fcd',
-    redirectUri: 'https://pokemon-spotify.herokuapp.com/callback'
-    // redirectUri: 'http://localhost:8888/callback'
+    // redirectUri: 'https://pokemon-spotify.herokuapp.com/callback'
+    redirectUri: 'http://localhost:8888/callback'
   });
 
 // 'http://localhost:8888/callback'
@@ -67,16 +67,22 @@ app.get('/json_fetch', function routeHandler(req,res) {
 
   async function get_json() {
     console.log("inside the function");
+    console.log("access token in function: " + spotifyApi.getAccessToken());
+
+    var short_response;
+    var medium_response;
+    var long_response;
 
     try {
-      const short_response = await spotifyApi.getMyTopTracks({time_range : "short_term"});
-      const medium_response = await spotifyApi.getMyTopTracks({time_range : "medium_term"});
-      const long_response = await spotifyApi.getMyTopTracks({time_range : "long_term"});
+      short_response = await spotifyApi.getMyTopTracks({time_range : "short_term"});
+      medium_response = await spotifyApi.getMyTopTracks({time_range : "medium_term"});
+      long_response = await spotifyApi.getMyTopTracks({time_range : "long_term"});
     } catch (e) {
       console.error(e);
     }
 
     console.log("successful fetch for response");
+    console.log(short_response);
 
     var short_arr = [];
     var medium_arr = [];
@@ -85,6 +91,8 @@ app.get('/json_fetch', function routeHandler(req,res) {
     var short_tracks = short_response.body.items;
     var medium_tracks = medium_response.body.items;
     var long_tracks = long_response.body.items;
+
+    console.log("are we hereeeeeeeeee???");
 
     for(const song of short_tracks) {
       short_arr.push(song["id"]);
