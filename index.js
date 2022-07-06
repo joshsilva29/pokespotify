@@ -46,6 +46,9 @@ app.get('/callback', function routeHandler(req, res) {
           var access_token = data.body['access_token'];
           var refresh_token = data.body['refresh_token'];
 
+          console.log("access token: " + data.body['access_token']);
+          console.log("refresh token: " + data.body['refresh_token']);
+
           // Set the access token on the API object to use it in later calls
           spotifyApi.setAccessToken(data.body['access_token']);
           spotifyApi.setRefreshToken(data.body['refresh_token']);
@@ -64,9 +67,16 @@ app.get('/json_fetch', function routeHandler(req,res) {
 
   async function get_json() {
     console.log("inside the function");
-    const short_response = await spotifyApi.getMyTopTracks({time_range : "short_term"});
-    const medium_response = await spotifyApi.getMyTopTracks({time_range : "medium_term"});
-    const long_response = await spotifyApi.getMyTopTracks({time_range : "long_term"});
+
+    try {
+      const short_response = await spotifyApi.getMyTopTracks({time_range : "short_term"});
+      const medium_response = await spotifyApi.getMyTopTracks({time_range : "medium_term"});
+      const long_response = await spotifyApi.getMyTopTracks({time_range : "long_term"});
+    } catch (e) {
+      console.error(e);
+    }
+
+    console.log("successful fetch for response");
 
     var short_arr = [];
     var medium_arr = [];

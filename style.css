@@ -71,12 +71,73 @@ body {
     font-size: calc(12px + 1.5vw);
 }
 
+.container .info {
+    margin-bottom: 30px;
+}
+
 .container #login {
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+
+.container #loggedin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.container #content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-right: auto;
+    margin-left: auto; 
+}
+
+.container #content #left-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 175%;
+}
+
+.container #content #right-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.container #content #right-content #flavor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-style: solid;
+    border-color: #1DB954;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.container #content #right-content #overall-stats .stat {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+.container #content #right-content #overall-stats .stat .stat-title {
+    margin-right: 20px;
 }
 
 @media screen and (orientation: landscape) {
@@ -91,6 +152,11 @@ body {
         margin-right: auto;
         margin-left: auto;
         margin-bottom: 1em;
+    }
+
+    img #poke-photo {
+        width: 30%;
+        height: 30%;
     }
 }
 

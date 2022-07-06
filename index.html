@@ -24,12 +24,32 @@
         <img id="load_gif" src="/images/pokeball_load.gif">
       </div>
       <div id="loggedin" display="none">
-        <img id="poke-photo" src="" alt="yasssss">
-        <h2 id="poke-name" style="color: white"></h2>
-        <h2 id="flavor" style="color: white"></h2>
-        <h2 id="mood" style="color: white"></h2>
-        <h2 id="energy" style="color: white"></h2>
-        <h2 id="acoustic" style="color: white"></h2>
+        <h2 id="poke-name" style="color: white; margin-top: 30px;"></h2>
+        <div id="content">
+          <div id="left-content">
+            <img id="poke-photo" src="" alt="yasssss">
+          </div>
+          <div id="right-content">
+            <h2 id="poke-name" style="color: white"></h2>
+            <h4 id="flavor" style="color: white"></h2>
+
+            <div id="overall-stats">
+              <div id="mood-stat" class="stat">
+                <h4 id="mood-title" style="color: white" class="stat-title">Mood</h4>
+                <meter id="mood" min="0" max="2" value="0"></meter>
+              </div>
+              <div id="energy-stat" class="stat">
+                <h4 id="energy-title" style="color: white" class="stat-title">Energy</h4>
+                <meter id="energy" min="0" max="3" value="0"></meter>
+              </div>
+              <div id="acoustic-stat" class="stat">
+                <h4 id="acoustic-title" style="color: white" class="stat-title">Acousticness</h4>
+                <meter id="acoustic" min="0" max="1" value="0"></meter>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
       <div class="info">
         <h4 id="login-credits" >Developed by Joshua Silva</h4>
@@ -85,19 +105,16 @@
       getValues().then(
         function(result) {
           var poke_name = result.name;
-          var mood_str = "" + result.mood;
-          var energy_str = "" + result.energy;
-          var acoustic_str = "" + result.acoustic;
           var flavor_text = result.flavor;
           var artwork_link = result.artwork;
 
-          document.getElementById("mood").innerHTML = mood_str;
-          document.getElementById("energy").innerHTML = energy_str;
-          document.getElementById("acoustic").innerHTML = acoustic_str;
-          document.getElementById("poke-name").innerHTML = poke_name;
-          document.getElementById("flavor").innerHTML = flavor_text;
           document.getElementById("poke-photo").src = artwork_link;
           document.getElementById("poke-photo").alt = "this is a " + poke_name;
+          document.getElementById("poke-name").innerHTML = "You are a " + poke_name + "!";
+          document.getElementById("flavor").innerHTML = flavor_text;
+          document.getElementById("mood").value = result.mood;
+          document.getElementById("energy").value = result.energy;
+          document.getElementById("acoustic").value = result.acoustic;
         },
         function(error) {
           document.getElementById("poke-name").innerHTML = "aint no way???? " + error;
