@@ -539,7 +539,7 @@ app.get('/json_fetch', function routeHandler(req,res) {
       "poke": poke_link
     }
 
-    return all_vals
+    return all_vals;
   }
 
   get_json().then(function(result) {
