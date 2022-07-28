@@ -41,6 +41,8 @@ app.get('/login', function routeHandler(req, res) {
 //callback path (from spotify callback uri)
 app.get('/callback', function routeHandler(req, res) {
     var code = req.query.code || null;
+    var code_str = "code: " + code;
+    console.log(code_str);
     spotifyApi.authorizationCodeGrant(code).then(
         function(data) {
           var access_token = data.body['access_token'];

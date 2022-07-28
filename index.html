@@ -33,18 +33,22 @@
             <h2 id="poke-name" style="color: white"></h2>
             <h4 id="flavor" style="color: white"></h2>
 
-            <div id="overall-stats">
-              <div id="mood-stat" class="stat">
+            <div id="bottom-right-content">
+              <div id="stat-text">
                 <h4 id="mood-title" style="color: white" class="stat-title">Mood</h4>
-                <meter id="mood" min="0" max="2" value="0"></meter>
-              </div>
-              <div id="energy-stat" class="stat">
                 <h4 id="energy-title" style="color: white" class="stat-title">Energy</h4>
-                <meter id="energy" min="0" max="3" value="0"></meter>
-              </div>
-              <div id="acoustic-stat" class="stat">
                 <h4 id="acoustic-title" style="color: white" class="stat-title">Acousticness</h4>
-                <meter id="acoustic" min="0" max="1" value="0"></meter>
+              </div>
+              <div id="stat-bar">
+                <div id="mood-stat" class="stat">
+                  <meter id="mood" min="0" low="0.4" high="1" max="2" optimum="1.5" value="0"></meter>
+                </div>
+                <div id="energy-stat" class="stat">
+                  <meter id="energy" min="0" low="0.6" high="1.5" max="3" optimum="2.5" value="0"></meter>
+                </div>
+                <div id="acoustic-stat" class="stat">
+                  <meter id="acoustic" min="0" low="0.2" high="0.5" max="1" optimum="0.7" value="0"></meter>
+                </div>
               </div>
             </div>
 

@@ -128,17 +128,34 @@ body {
     padding: 10px;
 }
 
-.container #content #right-content #overall-stats .stat {
+.container #content #right-content #bottom-right-content {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    text-align: center;
-    margin: auto;
+    margin: 12px;
 }
 
-.container #content #right-content #overall-stats .stat .stat-title {
-    margin-right: 20px;
+.container #content #right-content #bottom-right-content #stat-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+    margin-right: 10px;
 }
+
+.container #content #right-content #bottom-right-content #stat-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-left: 10px;
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+
+/*meter */
+meter::-webkit-meter-optimum-value {background: green;}
+meter::-webkit-meter-suboptimum-value{background:orange;}
+meter::-webkit-meter-even-less-good-value{background:red;}
 
 @media screen and (orientation: landscape) {
     #login_button {
