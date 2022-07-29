@@ -24,7 +24,6 @@
         <img id="load_gif" src="/images/pokeball_load.gif">
       </div>
       <div id="loggedin" display="none">
-        <h2 id="poke-name" style="color: white; margin-top: 30px;"></h2>
         <div id="content">
           <div id="left-content">
             <img id="poke-photo" src="" alt="yasssss">
@@ -111,10 +110,16 @@
           var poke_name = result.name;
           var flavor_text = result.flavor;
           var artwork_link = result.artwork;
+          var poke_name_str = "You are a " + poke_name + "!";
+
+          if(poke_name.charAt(0) === "A" || poke_name.charAt(0) === "E" || poke_name.charAt(0) === "I" 
+            || poke_name.charAt(0) === "O" || poke_name.charAt(0) === "U") {
+              poke_name_str = "You are an " + poke_name + "!";
+            }
 
           document.getElementById("poke-photo").src = artwork_link;
           document.getElementById("poke-photo").alt = "this is a " + poke_name;
-          document.getElementById("poke-name").innerHTML = "You are a " + poke_name + "!";
+          document.getElementById("poke-name").innerHTML = poke_name_str;
           document.getElementById("flavor").innerHTML = flavor_text;
           document.getElementById("mood").value = result.mood;
           document.getElementById("energy").value = result.energy;

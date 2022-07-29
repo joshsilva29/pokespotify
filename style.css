@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: "Circular-Book";
-    src: url("/fonts/circular-bold.woff2") format("woff2");
+    src: url("/fonts/circular-book.woff2") format("woff2");
 }
 
 * {
@@ -68,6 +68,7 @@ body {
     text-align: center;
     color: #1DB954;
     margin-bottom: 1.4em;
+    font-family: 'Circular-Book', Arial, Helvetica, sans-serif;
     font-size: calc(12px + 1.5vw);
 }
 
@@ -116,23 +117,29 @@ body {
     text-align: center;
 }
 
+.container #content #poke-name {
+    margin: 20px;
+    text-align: center;
+}
+
 .container #content #right-content #flavor {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    border-style: solid;
-    border-color: #1DB954;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 10px;
+    border-style: outset;
+    border-color: rgb(97, 149, 219, .6);
+    border-radius: 40px;
+    border-width: 9px;
+    background-color: rgb(97, 149, 219, .6);
+    font-family: 'Circular-Book', Arial, Helvetica, sans-serif;
+    padding: 20px;
 }
 
 .container #content #right-content #bottom-right-content {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 12px;
 }
 
 .container #content #right-content #bottom-right-content #stat-text {
@@ -153,6 +160,11 @@ body {
 }
 
 /*meter */
+meter {width: 300px;}
+meter::-webkit-meter-bar {
+    border: none;
+    background: rgb(97, 149, 219, .6);
+  }
 meter::-webkit-meter-optimum-value {background: green;}
 meter::-webkit-meter-suboptimum-value{background:orange;}
 meter::-webkit-meter-even-less-good-value{background:red;}
@@ -172,8 +184,8 @@ meter::-webkit-meter-even-less-good-value{background:red;}
     }
 
     img #poke-photo {
-        width: 30%;
-        height: 30%;
+        width: 50vw;
+        height: 50vw;
     }
 }
 
