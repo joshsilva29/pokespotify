@@ -202,5 +202,8 @@ meter::-webkit-meter-even-less-good-value{background:red;}
         margin-left: auto;
         margin-bottom: 1em;
     }
+    .container {
+        flex-direction: row;
+    }
 }
 
