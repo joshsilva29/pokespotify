@@ -205,5 +205,8 @@ meter::-webkit-meter-even-less-good-value{background:red;}
     .container {
         flex-direction: row;
     }
+    #content {
+        flex-direction: row;
+    }
 }
 
